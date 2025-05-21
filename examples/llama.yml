@@ -1,0 +1,21 @@
+MODELS:
+  - &model1 hello/
+  - &model2 there/
+
+PARAMETERS:
+  - &params1
+    weight: .8
+  - &params2
+    weight: .2
+
+# model soup
+slices:
+  - sources:
+      - model: *model1
+        layer_range: [0, 79]
+        parameters: *params1
+      - model: *model2
+        layer_range: [0, 79]
+        parameters: *params2
+merge_method: linear
+dtype: float16
